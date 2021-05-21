@@ -1,11 +1,9 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import ProductList from "./ProductList";
 import Cart from "./Cart";
 
-
 function App() {
-  
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const copy = [...products];
@@ -37,11 +35,15 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <h1>FOO BAR</h1>
-      </div>
-      <ProductList product={copy} addToCart={addToCart} />
+      <img alt="craft beers" className="header-image" src="../crafts.jpg" />
+      <img alt="foobar logo" className="foobar-logo" src="../foobar-logo.png" />
+      <img alt="orange wave" className="orange-wave" src="../orange-wave.svg" />
       <Cart cart={cart} />
+      <h1>On Tap</h1>
+      <ProductList product={copy} addToCart={addToCart} />
+      <footer>
+      <h2>Cheers</h2>
+      </footer>
     </div>
   );
 }
