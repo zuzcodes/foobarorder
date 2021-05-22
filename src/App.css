@@ -3,11 +3,58 @@
 
 body {
   background-color:rgb(225,227,216);
+  overflow-x: hidden;
 }
 
 .App {
   display: flex;
   flex-direction: column;
+}
+
+/* Landing */
+.landing {
+  background-color: rgb(223,225,226);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 3;
+}
+
+.landing-image {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  opacity: 60%;
+  top: 0;
+  left:0;
+  z-index: 4;
+}
+
+.blue-wave {
+  position: absolute;
+  width: 80vw;
+  height: auto;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+}
+
+.foobar-logo-landing {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  top: 100px;
+  left: calc(50% - 100px);
+  z-index: 6;
+}
+
+.qr-sample {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  bottom: 100px;
+  left: calc(50% - 50px);
+  z-index: 7;
 }
 
 /* Header */
@@ -42,7 +89,6 @@ h1 {
   left: -10px;
   width: 103%;
   height: auto;
-  overflow: hidden;
   z-index: -8;
 }
 
@@ -54,27 +100,33 @@ h1 {
   background-color:rgb(225,227,216);
   font-family: 'Montserrat', sans-serif;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   z-index: 1;
+  overflow-y: hidden;
 }
 
 .CartContent {
-  margin-top: 200px;
+  margin-top: 100px;
   text-align: center;
 }
 
 .cart-btn {
   position: absolute;
-  width: 30px;
+  font-size: 2em;
   height: auto;
   top: 20px;
-  right: 10px;
+  right: 20px;
   padding: 20px;
-  z-index: 2;
 }
 
 .x-btn {
   position: fixed;
+  font-size: 2em;
+  height: auto;
+  top: 20px;
+  right: 20px;
+  padding: 20px;
+  z-index: 2;
 }
 
 .hide {
@@ -86,13 +138,21 @@ h1 {
 }
 
 /* Payment Form */
+.CheckoutForm {
+  background-color:rgb(225,227,216);
+}
+
 form {
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: center;
-  margin: 150px auto;
+  margin: 50px auto;
   width: 300px;
+}
+
+form h3 {
+  text-align: center;
 }
 
 form > input {
@@ -101,12 +161,26 @@ form > input {
   height: 30px;
 }
 
+form > label {
+  font-size: smaller;
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
 .submit-btn {
   margin: 20px 50px;
   background-color: transparent;
-  border: 2px solid purple;
+  border: 2px solid rgb(134, 82, 232);
   border-radius: 20px;
   height: 40px;
+  font-weight: bolder;
+  color:rgb(134, 82, 232);
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: rgb(134, 82, 232);
+  color: rgb(255, 255, 255);
 }
 
 /* Product */
@@ -194,6 +268,13 @@ footer h2 {
 
 /* Media Queries */
 @media screen and (min-width: 800px) {
+
+  .landing-image {
+    position: absolute;
+    top: -300px;
+    height: auto;
+  }
+
   .ProductList {
     align-items: center;
     justify-content: left;

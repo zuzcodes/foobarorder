@@ -55,7 +55,6 @@ export default function PaymentForm() {
           minLength="5"
           maxLength="5"
         />
-
         <button type="submit" className="submit-btn">Confirm & Pay</button>
       </form>
     </section>
