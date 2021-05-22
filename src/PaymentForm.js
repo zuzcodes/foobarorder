@@ -21,6 +21,7 @@ export default function PaymentForm() {
   return (
     <section className="CheckoutForm">
       <form ref={formEl} noValidate onSubmit={onSubmit}>
+      <h3>PAYMENT</h3>
         <label htmlFor="form_name">Name</label>
         <input
           type="text"
@@ -55,7 +56,7 @@ export default function PaymentForm() {
           maxLength="5"
         />
 
-        <input type="submit" value="Pay" />
+        <button type="submit" className="submit-btn">Confirm & Pay</button>
       </form>
     </section>
   );

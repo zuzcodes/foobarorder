@@ -1,6 +1,7 @@
 export default function CartContent({ cart }) {
   return (
-    <section className="CartContent">
+    <section className="CartContent hidden">
+      <h3>MY FOO ORDER</h3>
       <p>
         You have {cart.length} item{cart.length === 1 ? "" : "s"} in your cart.
       </p>

@@ -4,9 +4,14 @@ import ProductList from "./ProductList";
 import Cart from "./Cart";
 
 function App() {
+  const [isActive, setActive] = useState("false");
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const copy = [...products];
+
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
 
   useEffect(() => {
     fetch(`https://carrotsfoobar.herokuapp.com/beertypes`)
@@ -35,14 +40,17 @@ function App() {
 
   return (
     <div className="App">
+      <div className={isActive ? "hide" : "show"}>
+        <Cart cart={cart} />
+      </div>
       <img alt="craft beers" className="header-image" src="../crafts.jpg" />
-      <img alt="foobar logo" className="foobar-logo" src="../foobar-logo.png" />
       <img alt="orange wave" className="orange-wave" src="../orange-wave.svg" />
-      <Cart cart={cart} />
+      <img alt="foobar logo" className="foobar-logo" src="../foobar-logo.png" />
+      <img onClick={handleToggle} alt="shopping cart" className="cart-btn" src="../shopping-cart.png" />
       <h1>On Tap</h1>
       <ProductList product={copy} addToCart={addToCart} />
       <footer>
-      <h2>Cheers</h2>
+        <h2>Cheers</h2>
       </footer>
     </div>
   );

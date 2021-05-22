@@ -11,7 +11,6 @@ body {
 }
 
 /* Header */
-
 h1 {
   font-family: 'Paytone One', sans-serif;
   margin: 200px auto;
@@ -39,12 +38,75 @@ h1 {
 
 .orange-wave {
   position: absolute;
-  top: 300px;
+  top: 400px;
   left: -10px;
   width: 103%;
   height: auto;
   overflow: hidden;
   z-index: -8;
+}
+
+/* Cart */
+.Cart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color:rgb(225,227,216);
+  font-family: 'Montserrat', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+.CartContent {
+  margin-top: 200px;
+  text-align: center;
+}
+
+.cart-btn {
+  position: absolute;
+  width: 30px;
+  height: auto;
+  top: 20px;
+  right: 10px;
+  padding: 20px;
+  z-index: 2;
+}
+
+.x-btn {
+  position: fixed;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+/* Payment Form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  margin: 150px auto;
+  width: 300px;
+}
+
+form > input {
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+}
+
+.submit-btn {
+  margin: 20px 50px;
+  background-color: transparent;
+  border: 2px solid purple;
+  border-radius: 20px;
+  height: 40px;
 }
 
 /* Product */
@@ -118,13 +180,6 @@ h1 {
   opacity: 70%;
 }
 
-/* Payment Form */
-form {
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
-}
-
 /* Footer */
 footer {
   text-align: center;
@@ -138,7 +193,6 @@ footer h2 {
 }
 
 /* Media Queries */
-
 @media screen and (min-width: 800px) {
   .ProductList {
     align-items: center;
