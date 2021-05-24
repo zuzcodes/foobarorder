@@ -10,14 +10,15 @@ export default function PaymentForm() {
   function onSubmit(evt) {
     evt.preventDefault();
     if (!ccEl.current.checkValidity()) {
-      setCCError("I really need you to fill this in");
+      setCCError("this field is required");
     }
     if (formEl.current.checkValidity()) {
-      console.log("valid, let post");
+      console.log("valid");
     } else {
       console.log("not valid");
     }
   }
+  
   return (
     <section className="CheckoutForm">
       <form ref={formEl} noValidate onSubmit={onSubmit}>
@@ -25,6 +26,7 @@ export default function PaymentForm() {
         <label htmlFor="form_name">Name</label>
         <input
           type="text"
+          ref={ccEl}
           id="form_name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -48,6 +50,7 @@ export default function PaymentForm() {
         <input
           type="text"
           id="form_day_month"
+          ref={ccEl}
           value={dayMonth}
           onChange={(e) => setDayMonth(e.target.value.replace(/\D\//g, ""))}
           required
@@ -55,6 +58,7 @@ export default function PaymentForm() {
           minLength="5"
           maxLength="5"
         />
+        <span>{ccError}</span>
         <button type="submit" className="submit-btn">Confirm & Pay</button>
       </form>
     </section>

@@ -279,3 +279,9 @@ footer h2 {
     margin-left: 100px;
   }
 }
+
+
+.tryout {
+  position: absolute;
+  z-index: 40;
+}

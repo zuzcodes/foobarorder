@@ -5,6 +5,7 @@ import Cart from "./Cart";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBasket, faTimes } from '@fortawesome/free-solid-svg-icons'
 
+
 function App() {
   const [isActive, setActive] = useState("false");
   const [isVisible, setVisible] = useState("true");
@@ -47,6 +48,22 @@ function App() {
     }
   }
 
+  function post() {
+    const data = cart.map((item) => {
+      return { name: item.name, amount: item.amount };
+    });
+    console.log(data);
+    const postData = JSON.stringify(data);
+    fetch("https://carrotsfoobar.herokuapp.com/order", {
+      method: "post",
+      body: postData,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    });
+    setCart([]);
+  }
+
   return (
     <div className="App">
       <div className={isVisible ? null : "hide" }>
@@ -60,6 +77,7 @@ function App() {
       <div className={isActive ? "hide" : "show"}>
         <Cart cart={cart} />
         <FontAwesomeIcon icon={faTimes} onClick={handleToggle} className="x-btn"/>
+        <button className="tryout" onClick={post}>POST BTN</button>
       </div>
       <img alt="craft beers" className="header-image" src="../crafts.jpg" />
       <img alt="orange wave" className="orange-wave" src="../orange-wave.svg" />
