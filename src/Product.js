@@ -1,5 +1,4 @@
 export default function Product(props) {
-
     return (
       <article className={props.soldOut ? "Product soldout" : "Product"}>
         <h3>{props.name}</h3>

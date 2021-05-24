@@ -31,6 +31,7 @@ function App() {
     const inCart = cart.findIndex((item) => item.name === payload.id);
     if (inCart === -1) {
       //add amount
+      console.log(payload)
       const nextPayload = { ...payload };
       nextPayload.amount = 1;
       setCart((prevState) => [...prevState, nextPayload]);
