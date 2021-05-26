@@ -46,6 +46,12 @@ function App() {
       });
       setCart(nextCart);
     }
+    setCartFeedback();
+  }
+
+  function setCartFeedback() {
+    const cart= document.getElementById("cart");
+    cart.classList.toggle("isgreen");
   }
 
   function post() {
@@ -60,7 +66,8 @@ function App() {
       headers: {
         "Content-Type": "application/json; charset=utf-8",
       },
-    });
+    })
+    .then(res=>res.json()).then(console.log)
     setCart([]);
   }
 
@@ -82,7 +89,7 @@ function App() {
       <img alt="craft beers" className="header-image" src="../crafts.jpg" />
       <img alt="orange wave" className="orange-wave" src="../orange-wave.svg" />
       <img alt="foobar logo" className="foobar-logo" src="../foobar-logo.png" />
-      <FontAwesomeIcon icon={faShoppingBasket} onClick={handleToggle} className="cart-btn"/>
+      <FontAwesomeIcon id="cart" icon={faShoppingBasket} onClick={handleToggle} className="cart-btn"/>
       <h1>On Tap</h1>
       <ProductList product={copy} addToCart={addToCart} />
       <footer>
