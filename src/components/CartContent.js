@@ -10,11 +10,13 @@ export default function CartContent({ cart }) {
         <li>Amount</li>
         <li>Unit Price</li>
       </ul>
-        {cart.map((item) => (
-          <CartItem name={item.name} amount={item.amount} price={item.amount * 49} key={item.name} />
-        ))}
-        <hr/> 
-        <li>TOTAL {cart.length} {cart.length * 49} DKK </li>
+      {cart.map((item) => (
+        <CartItem name={item.name} amount={item.amount} price={item.amount * 49} key={item.name} />
+      ))}
+      <hr />
+      <li>
+        TOTAL {cart.length} {cart.length * 49} DKK{" "}
+      </li>
     </section>
   );
 }
@@ -23,7 +25,7 @@ function CartItem(props) {
   console.log(props);
   return (
     <li>
-      {props.name} {props.amount} {props.price} DKK 
+      {props.name} {props.amount} {props.price} DKK
     </li>
   );
 }

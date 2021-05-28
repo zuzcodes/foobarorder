@@ -1,32 +1,43 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import "./App.css";
-import ProductList from "./ProductList";
-import Cart from "./Cart";
+import Landing from "./pages/Landing";
+import ProductList from "./components/ProductList";
+import Cart from "./components/Cart";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBasket, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 
 function App() {
   const [isActive, setActive] = useState("false");
-  const [isVisible, setVisible] = useState("true");
   const [products, setProducts] = useState([]);
+  const [availableProducts, setAvailablePrtoducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const copy = [...products];
   
+  const all = [...products];
+  const available = [...availableProducts];
 
+  useEffect(getAvailableProducts, []);
+  useEffect(getProducts, []);
+  
   const handleToggle = () => {
     setActive(!isActive);
   };
 
-  const openMenu = () => {
-    setVisible(!isVisible);
-  };
-
-  useEffect(() => {
-    fetch(`https://carrotsfoobar.herokuapp.com/beertypes`)
+  function getAvailableProducts() {
+    fetch("https://carrotsfoobar.herokuapp.com/")
       .then((res) => res.json())
-      .then(setProducts);
-  }, []);
+      .then((data) => {
+        setAvailablePrtoducts(data.taps);
+      });
+  }
+
+  function getProducts() {
+    fetch("https://carrotsfoobar.herokuapp.com/beertypes")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      });
+  }
 
   function addToCart(payload) {
     const inCart = cart.findIndex((item) => item.name === payload.id);
@@ -73,14 +84,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className={isVisible ? null : "hide" }>
-        <div className="landing">
-        <img alt="foobar logo" className="foobar-logo-landing" src="../foobar-logo.png" />
-        <img onClick={openMenu} alt="sample qr code" className="qr-sample" src="../qr-sample.png" />
-        <img alt="blue wave" className="blue-wave" src="../blue-wave.svg" />
-        <img alt="beer taps by adam wilson from unspalsh" className="landing-image" src="../adam-wilson-ANK5zq-g_-g-unsplash.jpg" />
-        </div>
-      </div>
+      <Landing/>
       <div className={isActive ? "hide" : "show"}>
         <Cart cart={cart} />
         <FontAwesomeIcon icon={faTimes} onClick={handleToggle} className="x-btn"/>
@@ -91,7 +95,7 @@ function App() {
       <img alt="foobar logo" className="foobar-logo" src="../foobar-logo.png" />
       <FontAwesomeIcon id="cart" icon={faShoppingBasket} onClick={handleToggle} className="cart-btn"/>
       <h1>On Tap</h1>
-      <ProductList product={copy} addToCart={addToCart} />
+      <ProductList product={all} availableProducts={available} addToCart={addToCart} />
       <footer>
         <h2>Cheers</h2>
       </footer>

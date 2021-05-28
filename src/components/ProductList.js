@@ -1,7 +1,6 @@
-import Product from "./Product";
+import Product from "../components/Product";
 
 export default function ProductList(props) {
-  console.log(props);
   return (
     <main className="ProductList">
       {props.product.length === 0 && <p>Loading...</p>}

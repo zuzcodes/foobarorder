@@ -13,7 +13,7 @@ body {
 
 /* Landing */
 .landing {
-  background-color: transparent;
+  background-color: white;
   width: 100vw;
   height: 100vh;
   position: fixed;

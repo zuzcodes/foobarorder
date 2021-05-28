@@ -10,28 +10,21 @@ export default function PaymentForm() {
   function onSubmit(evt) {
     evt.preventDefault();
     if (!ccEl.current.checkValidity()) {
-      setCCError("this field is required");
+      setCCError("Required");
     }
     if (formEl.current.checkValidity()) {
-      console.log("valid");
+      console.log("Form is valid!");
     } else {
-      console.log("not valid");
+      console.log("Form is not valid!");
     }
   }
-  
+
   return (
     <section className="CheckoutForm">
       <form ref={formEl} noValidate onSubmit={onSubmit}>
-      <h3>PAYMENT</h3>
+        <h3>PAYMENT</h3>
         <label htmlFor="form_name">Name</label>
-        <input
-          type="text"
-          ref={ccEl}
-          id="form_name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+        <input type="text" ref={ccEl} id="form_name" value={name} onChange={(e) => setName(e.target.value)} required />
 
         <label htmlFor="form_cc">Card Number</label>
         <input
@@ -59,7 +52,9 @@ export default function PaymentForm() {
           maxLength="5"
         />
         <span>{ccError}</span>
-        <button type="submit" className="submit-btn">Confirm & Pay</button>
+        <button type="submit" className="submit-btn">
+          Confirm & Pay
+        </button>
       </form>
     </section>
   );
