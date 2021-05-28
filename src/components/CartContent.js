@@ -5,18 +5,22 @@ export default function CartContent({ cart }) {
       <p>
         You have {cart.length} item{cart.length === 1 ? "" : "s"} in your cart.
       </p>
-      <ul>
-        <li>Product</li>
-        <li>Amount</li>
-        <li>Unit Price</li>
-      </ul>
+      <div className="CartHeader">
+        <p className="p-width">Product</p>
+        <p>Amount</p>
+        <p>Unit Price</p>
+        <p>Delete</p>
+      </div>
       {cart.map((item) => (
         <CartItem name={item.name} amount={item.amount} price={item.amount * 49} key={item.id} />
       ))}
       <hr />
-      <li>
-        TOTAL {cart.length} {cart.length * 49} DKK{" "}
-      </li>
+      <div className="CartSummary">
+        <p className="p-width">Total</p>
+        <p>{cart.length}</p>
+        <p>{cart.length * 49},-</p>
+        <p>KRONE</p>
+      </div>
     </section>
   );
 }
@@ -24,8 +28,11 @@ export default function CartContent({ cart }) {
 function CartItem(props) {
   console.log(props);
   return (
-    <li>
-      {props.name} {props.amount} {props.price} DKK
-    </li>
+    <div className="CartItems">
+    <p className="p-width">{props.name}</p>
+    <p>{props.amount}</p>
+    <p>{props.price},-</p>
+    <button>Delete</button>
+    </div>
   );
 }

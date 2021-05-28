@@ -186,8 +186,33 @@ h1 {
 }
 
 .CartContent {
-  margin-top: 100px;
+  padding-top: 100px;
   text-align: center;
+  width: 350px;
+  margin: 0 auto;
+
+}
+
+.CartHeader, .CartSummary {
+  display: flex;
+  flex-direction: row;
+  font-weight: bolder;
+  font-size: smaller;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.CartItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: smaller;
+}
+
+.p-width {
+  width: 80px;
+  flex-wrap: wrap;
+  text-align: left;
 }
 
 .cart-btn {
@@ -219,16 +244,18 @@ h1 {
 
 /* Payment Form */
 .CheckoutForm {
-  background-color: rgb(225, 227, 216);
+  background-color: rgb(232, 234, 226);
 }
 
 form {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: left;
   justify-content: center;
   margin: 50px auto;
-  width: 300px;
+  width: 200px;
+  position: relative;
 }
 
 form h3 {
@@ -239,6 +266,7 @@ form > input {
   border: none;
   border-radius: 10px;
   height: 30px;
+  width: 200px;
 }
 
 form > label {
@@ -247,8 +275,42 @@ form > label {
   margin-bottom: 3px;
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+  margin: 0;
+}
+
+.form-group > input {
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+  width: 80px;
+}
+
+.form-group > label {
+  font-size: smaller;
+  margin-top: 10px;
+  margin-bottom: 3px;
+}
+
+input:focus-within{
+  background-color: rgb(184,158,230);
+}
+
+input:focus, select:focus{
+  outline: none;
+}
+
+.left {
+  position: absolute;
+  bottom: 80px;
+  left: 120px;
+}
+
 .submit-btn {
-  margin: 20px 50px;
+  margin: 20px 30px;
   background-color: transparent;
   border: 2px solid rgb(134, 82, 232);
   border-radius: 20px;
@@ -261,6 +323,12 @@ form > label {
 .submit-btn:hover {
   background-color: rgb(134, 82, 232);
   color: rgb(255, 255, 255);
+}
+
+.submit-btn:disabled {
+  border: none;
+  background-color: rgb(134, 82, 232, 0.5);
+  color: rgb(255, 255, 255, 0.5);
 }
 
 /* Footer */
