@@ -1,61 +1,71 @@
-import { useState, useRef } from "react";
-export default function PaymentForm() {
-  const formEl = useRef(null);
-  const ccEl = useRef(null);
-  const [name, setName] = useState("");
-  const [cc, setCC] = useState("");
-  const [ccError, setCCError] = useState("");
-  const [dayMonth, setDayMonth] = useState("");
+import { useState, useEffect, useRef } from "react";
+import { Input, Button } from "antd";
+import InputMask from "react-input-mask";
 
-  function onSubmit(evt) {
-    evt.preventDefault();
-    if (!ccEl.current.checkValidity()) {
-      setCCError("Required");
-    }
-    if (formEl.current.checkValidity()) {
-      console.log("Form is valid!");
-    } else {
-      console.log("Form is not valid!");
-    }
+export default function PaymentForm() {
+  const [name, setName] = useState("");
+  const [cardnumber, setCardnumber] = useState("");
+  const [monthYear, setMonthYear] = useState("");
+  const [isValid, setIsValid] = useState(false);
+  
+
+  const form = useRef(null);
+
+  useEffect(() => {
+    const isCreditCardValid = cardnumber.replaceAll(" ", "").length === 16;
+    const isMonthYearValid = monthYear.replace("/", "").length === 4;
+    setIsValid(
+      form.current.checkValidity() && isMonthYearValid && isCreditCardValid
+    );
+  }, [name, cardnumber, monthYear]);
+
+  function onSubmit(e) {
+    e.preventDefault();
+    
   }
 
   return (
     <section className="CheckoutForm">
-      <form ref={formEl} noValidate onSubmit={onSubmit}>
-        <h3>PAYMENT</h3>
-        <label htmlFor="form_name">Name</label>
-        <input type="text" ref={ccEl} id="form_name" value={name} onChange={(e) => setName(e.target.value)} required />
-
-        <label htmlFor="form_cc">Card Number</label>
-        <input
-          type="text"
-          id="form_cc"
-          ref={ccEl}
-          value={cc}
-          onChange={(e) => setCC(e.target.value.replace(/\D/g, ""))}
-          required
-          pattern="[0-9]{16}"
-          minLength="16"
-          maxLength="16"
-        />
-        <span>{ccError}</span>
-        <label htmlFor="form_day_month">Day / Month</label>
-        <input
-          type="text"
-          id="form_day_month"
-          ref={ccEl}
-          value={dayMonth}
-          onChange={(e) => setDayMonth(e.target.value.replace(/\D\//g, ""))}
-          required
-          pattern="[0-1][0-9]/[0-9]{2}"
-          minLength="5"
-          maxLength="5"
-        />
-        <span>{ccError}</span>
-        <button type="submit" className="submit-btn">
-          Confirm & Pay
-        </button>
-      </form>
+      <form onSubmit={onSubmit} ref={form}>
+          <div className="form-control">
+            <label htmlFor="name">Name</label>
+            <Input
+              id="name"
+              type="text"
+              required
+              minLength="2"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+         
+          <div className="form-control">
+            <label htmlFor="cardnumber">Card number</label>
+            <InputMask
+              mask="9999 9999 9999 9999"
+              value={cardnumber}
+              maskChar=""
+              className="ant-input"
+              onChange={(e) => setCardnumber(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label htmlFor="monthyear">Month/Year</label>
+            <InputMask
+              mask="99/99"
+              maskChar=""
+              className="ant-input"
+              required
+              value={monthYear}
+              onChange={(e) => setMonthYear(e.target.value)}
+              minLength="17"
+            ></InputMask>
+          </div>
+          <Button type="primary" htmlType="submit" disabled={!isValid}>
+            Submit
+          </Button>
+        </form>
     </section>
   );
 }
