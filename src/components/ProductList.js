@@ -5,7 +5,7 @@ export default function ProductList(props) {
     <main className="ProductList">
       {props.product.length === 0 && <p>Loading...</p>}
       {props.product.map((item) => (
-        <Product addToCart={props.addToCart} {...item} key={item.name} />
+        <Product addToCart={props.addToCart} {...item} key={item.id} />
       ))}
     </main>
   );

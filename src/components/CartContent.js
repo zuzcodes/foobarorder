@@ -11,7 +11,7 @@ export default function CartContent({ cart }) {
         <li>Unit Price</li>
       </ul>
       {cart.map((item) => (
-        <CartItem name={item.name} amount={item.amount} price={item.amount * 49} key={item.name} />
+        <CartItem name={item.name} amount={item.amount} price={item.amount * 49} key={item.id} />
       ))}
       <hr />
       <li>

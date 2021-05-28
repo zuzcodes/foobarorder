@@ -10,15 +10,26 @@ import { faShoppingBasket, faTimes } from '@fortawesome/free-solid-svg-icons'
 function App() {
   const [isActive, setActive] = useState("false");
   const [products, setProducts] = useState([]);
-  const [availableProducts, setAvailablePrtoducts] = useState([]);
+  const [taps, setTaps] = useState([]);
+  const [availableProducts, setAvailableProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  
-  const all = [...products];
-  const available = [...availableProducts];
 
   useEffect(getAvailableProducts, []);
   useEffect(getProducts, []);
-  
+  useEffect(()=>{
+    console.log(products.length, availableProducts.length)
+    if(products.length > 0 && availableProducts.length > 0){
+      
+        const filtered = availableProducts.map(tap=>{
+        const description = products.find(item => item.name === tap.beer)
+        const nextBeer = {...tap, ...description}
+        return nextBeer;
+        })
+        setTaps(filtered)
+        }
+    }
+  ,[products, availableProducts])
+
   const handleToggle = () => {
     setActive(!isActive);
   };
@@ -27,7 +38,7 @@ function App() {
     fetch("https://carrotsfoobar.herokuapp.com/")
       .then((res) => res.json())
       .then((data) => {
-        setAvailablePrtoducts(data.taps);
+        setAvailableProducts(data.taps);
       });
   }
 
@@ -95,7 +106,7 @@ function App() {
       <img alt="foobar logo" className="foobar-logo" src="../foobar-logo.png" />
       <FontAwesomeIcon id="cart" icon={faShoppingBasket} onClick={handleToggle} className="cart-btn"/>
       <h1>On Tap</h1>
-      <ProductList product={all} availableProducts={available} addToCart={addToCart} />
+      <ProductList product={taps} addToCart={addToCart} />
       <footer>
         <h2>Cheers</h2>
       </footer>
