@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function Landing() {
-  const [isVisible, setVisible] = useState("true");
+  const [isVisible, setVisible] = useState(true);
   const openMenu = () => {
     setVisible(!isVisible);
   };

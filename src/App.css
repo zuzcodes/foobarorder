@@ -190,10 +190,10 @@ h1 {
   text-align: center;
   width: 350px;
   margin: 0 auto;
-
 }
 
-.CartHeader, .CartSummary {
+.CartHeader,
+.CartSummary {
   display: flex;
   flex-direction: row;
   font-weight: bolder;
@@ -295,11 +295,12 @@ form > label {
   margin-bottom: 3px;
 }
 
-input:focus-within{
-  background-color: rgb(184,158,230);
+input:focus-within {
+  background-color: rgb(184, 158, 230);
 }
 
-input:focus, select:focus{
+input:focus,
+select:focus {
   outline: none;
 }
 
@@ -343,6 +344,62 @@ footer h2 {
   margin: 100px;
 }
 
+/* Thanks */
+.thanks {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(232, 234, 226);
+  width: 100vw;
+  height: 100vh;
+  z-index: 8;
+  text-align: center;
+}
+
+.thanks-content {
+  margin: 40vh auto;
+}
+
+.thanks-content > h1 {
+  font-size: 3em;
+  color: rgb(134, 82, 232);
+  margin: 0;
+}
+
+.thanks-content > p {
+  font-size: smaller;
+}
+
+.thanks-btn {
+  background-color: rgb(189,215,232, 0.8);
+  width: 120px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.thanks-btn:hover:hover {
+  background-color: rgb(189,215,232);
+}
+
+.wave-color-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  height: auto;
+}
+
+.wave-color-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  min-width: 100vw;
+  height: auto;
+}
+
 /* Media Queries */
 @media screen and (min-width: 800px) {
   .landing-image {
@@ -357,14 +414,19 @@ footer h2 {
     margin-right: 200px;
     margin-left: 50px;
   }
+
+  .wave-color-top {
+    position: absolute;
+    top: -50px;
+  }
+
+  .wave-color-bottom {
+    position: absolute;
+    bottom: -50px;
+  }
 }
 
 /* Things in progress */
-
-.tryout {
-  position: absolute;
-  z-index: 40;
-}
 
 .isgreen {
   animation: isgreen 1s 1;
@@ -377,6 +439,25 @@ footer h2 {
   }
   50% {
     color: green;
+    font-size: 3em;
+  }
+  100% {
+    color: black;
+    font-size: 2em;
+  }
+}
+
+.isblue {
+  animation: isblue 1s 1;
+}
+
+@keyframes isblue {
+  0% {
+    color: black;
+    font-size: 2em;
+  }
+  50% {
+    color: blue;
     font-size: 3em;
   }
   100% {

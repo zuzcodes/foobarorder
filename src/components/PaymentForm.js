@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import InputMask from "react-input-mask";
 
-export default function PaymentForm() {
+export default function PaymentForm(props) {
   const [name, setName] = useState("");
   const [cardnumber, setCardnumber] = useState("");
   const [monthYear, setMonthYear] = useState("");
   const [cvc, setCvc] = useState("");
   const [isValid, setIsValid] = useState(false);
+  
 
   const form = useRef(null);
 
@@ -19,10 +20,12 @@ export default function PaymentForm() {
 
   function onSubmit(e) {
     e.preventDefault();
+    props.post();
+    props.showThanks();
   }
 
   return (
-    <section className="CheckoutForm" >
+    <section className="PaymentForm" >
       <form onSubmit={onSubmit} ref={form}>
         <h3>PAYMENT</h3>
         <label htmlFor="name">Name</label>
@@ -31,7 +34,7 @@ export default function PaymentForm() {
         <InputMask mask="9999 9999 9999 9999" value={cardnumber} maskChar="" onChange={(e) => setCardnumber(e.target.value)} required />
         <div className="form-group-inline">
           <div className="form-group">
-            <label htmlFor="monthyear">Month/Year</label>
+            <label htmlFor="monthyear">Expiration (MM/YY)</label>
             <InputMask mask="99/99" maskChar="" required value={monthYear} onChange={(e) => setMonthYear(e.target.value)} minLength="5"></InputMask>
           </div>
           <div className="form-group left">

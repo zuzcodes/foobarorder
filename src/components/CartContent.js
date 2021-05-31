@@ -1,4 +1,6 @@
-export default function CartContent({ cart }) {
+import CartItem from "../components/CartItem";
+
+export default function CartContent({ cart, removeFromCart}) {
   return (
     <section className="CartContent">
       <h3>MY FOO ORDER</h3>
@@ -12,7 +14,7 @@ export default function CartContent({ cart }) {
         <p>Delete</p>
       </div>
       {cart.map((item) => (
-        <CartItem name={item.name} amount={item.amount} price={item.amount * 49} key={item.id} />
+        <CartItem name={item.name} removeFromCart={removeFromCart} amount={item.amount} price={item.amount * 49} key={item.id} />
       ))}
       <hr />
       <div className="CartSummary">
@@ -22,17 +24,5 @@ export default function CartContent({ cart }) {
         <p>KRONE</p>
       </div>
     </section>
-  );
-}
-
-function CartItem(props) {
-  console.log(props);
-  return (
-    <div className="CartItems">
-    <p className="p-width">{props.name}</p>
-    <p>{props.amount}</p>
-    <p>{props.price},-</p>
-    <button>Delete</button>
-    </div>
   );
 }
