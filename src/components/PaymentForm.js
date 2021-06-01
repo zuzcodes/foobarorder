@@ -7,7 +7,6 @@ export default function PaymentForm(props) {
   const [monthYear, setMonthYear] = useState("");
   const [cvc, setCvc] = useState("");
   const [isValid, setIsValid] = useState(false);
-  
 
   const form = useRef(null);
 
@@ -21,11 +20,11 @@ export default function PaymentForm(props) {
   function onSubmit(e) {
     e.preventDefault();
     props.post();
-    props.showThanks();
+    props.showOrderConfirmation();
   }
 
   return (
-    <section className="PaymentForm" >
+    <section className="PaymentForm">
       <form onSubmit={onSubmit} ref={form}>
         <h3>PAYMENT</h3>
         <label htmlFor="name">Name</label>

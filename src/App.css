@@ -3,6 +3,7 @@
 
 body {
   background-color: rgb(232, 234, 226);
+  color: rgb(34, 34, 34);
   overflow-x: hidden;
 }
 
@@ -11,7 +12,7 @@ body {
   flex-direction: column;
 }
 
-/* Landing */
+/* Landing Page*/
 .landing {
   background-color: white;
   width: 100vw;
@@ -180,12 +181,14 @@ h1 {
   background-color: rgb(232, 234, 226);
   font-family: "Montserrat", sans-serif;
   width: 100vw;
-  height: 100%;
+  min-height: 100vh;
+  max-height: 100%;
   z-index: 1;
-  overflow-y: hidden;
+  overflow: scroll;
 }
 
 .CartContent {
+  background-color: rgb(232, 234, 226);
   padding-top: 100px;
   text-align: center;
   width: 350px;
@@ -225,7 +228,7 @@ h1 {
 }
 
 .x-btn {
-  position: fixed;
+  position: absolute;
   font-size: 2em;
   height: auto;
   top: 20px;
@@ -234,17 +237,11 @@ h1 {
   z-index: 2;
 }
 
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
 /* Payment Form */
-.CheckoutForm {
+.PaymentForm {
   background-color: rgb(232, 234, 226);
+  overscroll-behavior: contain;
+  height: 400px;
 }
 
 form {
@@ -344,7 +341,7 @@ footer h2 {
   margin: 100px;
 }
 
-/* Thanks */
+/* Thank You Page */
 .thanks {
   position: fixed;
   top: 0;
@@ -371,7 +368,7 @@ footer h2 {
 }
 
 .thanks-btn {
-  background-color: rgb(189,215,232, 0.8);
+  background-color: rgb(189, 215, 232, 0.8);
   width: 120px;
   color: white;
   border: none;
@@ -381,7 +378,7 @@ footer h2 {
 }
 
 .thanks-btn:hover:hover {
-  background-color: rgb(189,215,232);
+  background-color: rgb(189, 215, 232);
 }
 
 .wave-color-top {
@@ -426,42 +423,46 @@ footer h2 {
   }
 }
 
-/* Things in progress */
+/* UseState Classes and Feedback Animation */
 
-.isgreen {
-  animation: isgreen 1s 1;
+.hide {
+  display: none;
 }
 
-@keyframes isgreen {
+.show {
+  display: block;
+}
+
+.feedback1 {
+  animation: feedback1 1s 1;
+}
+
+@keyframes feedback1 {
   0% {
-    color: black;
-    font-size: 2em;
+    color: rgb(34, 34, 34);
   }
   50% {
-    color: green;
-    font-size: 3em;
+    color: rgb(134, 82, 232);
+    font-size: 110%;
   }
   100% {
-    color: black;
-    font-size: 2em;
+    color: rgb(34, 34, 34);
   }
 }
 
-.isblue {
-  animation: isblue 1s 1;
+.feedback2 {
+  animation: feedback2 1s 1;
 }
 
-@keyframes isblue {
+@keyframes feedback2 {
   0% {
-    color: black;
-    font-size: 2em;
+    color: rgb(34, 34, 34);
   }
   50% {
-    color: blue;
-    font-size: 3em;
+    color: rgb(134, 82, 232);
+    font-size: 110%;
   }
   100% {
-    color: black;
-    font-size: 2em;
+    color: rgb(34, 34, 34);
   }
 }

@@ -1,6 +1,6 @@
 import CartItem from "../components/CartItem";
 
-export default function CartContent({ cart, removeFromCart}) {
+export default function CartContent({ cart, removeFromCart }) {
   return (
     <section className="CartContent">
       <h3>MY FOO ORDER</h3>
