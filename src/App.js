@@ -15,6 +15,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [isVisible, setVisible] = useState(true);
   const [hasFeedback, setFeedback] = useState(true);
+  const [orderNumber, setOrderNumber] = useState("");
 
   useEffect(getAvailableProducts, []);
   useEffect(getProducts, []);
@@ -89,9 +90,14 @@ function App() {
       },
     })
       .then((res) => res.json())
-      .then(console.log);
-    setCart([]);
-  }
+      .then((res) => {
+        if (res.message === "added") {
+          console.log(res)
+          setOrderNumber(res.id);
+          setCart([]);
+        }
+      });
+    }
 
   function showOrderConfirmation() {
     setVisible(!isVisible);
@@ -114,7 +120,7 @@ function App() {
       <h1>On Tap</h1>
       <ProductList product={taps} addToCart={addToCart} />
       <div className={isVisible ? "hide" : "show"}>
-        <ThankYouPage />
+        <ThankYouPage orderNumber={orderNumber}/>
       </div>
       <footer>
         <h2>Cheers</h2>
