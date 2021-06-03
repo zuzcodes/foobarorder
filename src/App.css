@@ -110,7 +110,6 @@ h1 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
 }
 
 .Product {
@@ -124,6 +123,7 @@ h1 {
   align-items: flex-start;
   justify-content: flex-start;
   padding: 20px;
+  margin: 10px;
 }
 
 .Product h3 {
@@ -216,6 +216,11 @@ h1 {
   width: 80px;
   flex-wrap: wrap;
   text-align: left;
+}
+
+.remove-btn {
+  font-size: 1.5em;
+  padding: 10px;
 }
 
 .cart-btn {
@@ -391,7 +396,7 @@ footer h2 {
 
 .wave-color-bottom {
   position: absolute;
-  bottom: 0;
+  bottom: -50px;
   left: 0;
   min-width: 100vw;
   height: auto;
