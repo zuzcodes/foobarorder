@@ -55,6 +55,7 @@ body {
   width: 100px;
   height: 100px;
   bottom: 100px;
+  border-radius: 10px;
   left: calc(50% - 50px);
   z-index: 7;
 }
@@ -171,6 +172,11 @@ h1 {
   width: 70px;
   height: 70px;
   border-radius: 5px;
+  overflow: hidden;
+}
+
+.beer-logo img {
+  width: 70px;
 }
 
 /* Cart */
